@@ -1,71 +1,66 @@
 import Link from "next/link";
-import { useState } from "react"; 
-
+import Image from "next/image";
 
 function Navbar() {
-    // let { BrowserRouter, Switch, Route, NavLink } = ReactRouterDOM;
-      const [click, setClick] = useState(false);
-
-      const handleClick = () => setClick(!click);
-      const Close = () => setClick(false);
   return (
     <div>
-      <div>
-        <div
-          className={click ? "main-container" : ""}
-          onClick={() => Close()}
-        />
-        <nav className="navbar" onClick={(e) => e.stopPropagation()}>
-          <div className="nav-container">
-            <a className="nav-logo">
-              CodeBucks
-              <i className="fa fa-code"></i>
-            </a>
-
-            <ul className={click ? "nav-menu active" : "nav-menu"}>
+      <nav
+        id="navbar"
+        className="navbar navbar-expand-lg fixed-top navbar-custom navbar-light sticky wow fadeInUp"
+        data-wow-duration="1s"
+        data-wow-delay="0.2s"
+        data-wow-offset={0}
+      >
+        <div className="container">
+          <a className="navbar-brand" href="index.html">
+            <Image src="/logo.jpeg" alt="logo" width="80px" height="80px" />
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="mdi mdi-menu" />
+          </button>
+          {/*end button*/}
+          <div className="collapse navbar-collapse" id="navbarCollapse">
+            <ul id="navbar-navlist" className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a
-                  activeClassName="active"
-                  className="nav-links"
-                  onClick={click ? handleClick : null}
-                >
-                  Home
-                </a>
+                <Link href="#about">
+                  <a className="nav-link">About Hippo U</a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  activeClassName="active"
-                  className="nav-links"
-                  onClick={click ? handleClick : null}
-                >
-                  Home
-                </a>
+                <Link href="#roadmap">
+                  <a className="nav-link">Road Map</a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  activeClassName="active"
-                  className="nav-links"
-                  onClick={click ? handleClick : null}
-                >
-                  Home
-                </a>
+                <Link href="#faq">
+                  <a className="nav-link">FAQ</a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  activeClassName="active"
-                  className="nav-links"
-                  onClick={click ? handleClick : null}
-                >
-                  Home
-                </a>
+                <Link href="#team">
+                  <a className="nav-link">Team</a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="#">
+                  <a className="nav-link btnpri">Opensea</a>
+                </Link>
               </li>
             </ul>
-            <div className="nav-icon" onClick={handleClick}>
-              <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
-            </div>
+            {/*END NAVBAR NAV*/}
           </div>
-        </nav>
-      </div>
+          {/*END COLLAPSE*/}
+        </div>
+        {/* END CONTAINER */}
+      </nav>
     </div>
   );
 }
